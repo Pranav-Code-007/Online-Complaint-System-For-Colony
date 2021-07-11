@@ -1,0 +1,96 @@
+{% extends 'Layout.html' %}
+
+{% block body %}
+
+<div class="text-center">
+    <img src="{{url_for('static',filename='signup-icon-13.jpg')}}" class="rounded" alt="...">
+
+    <div class="d-flex justify-content-center align-items-center container ">
+        <form action="" method="post">
+            {{form.hidden_tag()}}
+            <br>
+            <h2><b> Sign Up </b></h2>
+
+            <hr>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-auto">
+                        <!-- It is just show label  --> {{form.firstname.label(class="form-control-label")}}
+                        <!-- It is used to accept input / to show inout field -->
+                        {{form.firstname(class="form-control")}}
+                        {% if form.firstname.errors %}
+                        <!--                        <ul class=errors>-->
+                        {% for error in form.firstname.errors %}
+                        <small>
+                            <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        </small>
+                        {% endfor %}
+
+                        {% endif %}
+
+                    </div>
+                    <div class="col-auto">
+                        {{form.lastname.label(class="form-control-label")}}
+                        {{form.lastname(class="form-control")}}
+
+                        {% if form.lastname.errors %}
+
+                        {% for error in form.lastname.errors %}
+                        <small>
+                            <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        </small>
+                        {% endfor %}
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-auto">
+                        {{form.email.label(class="form-control-label")}}
+                        {{form.email(class="form-control")}}
+
+                        {% if form.email.errors %}
+                        <ul class=errors>
+                            {% for error in form.email.errors %}
+                            <small>
+                                <div class="alert alert-danger" role="alert">{{ error }}</div>
+                            </small>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                    </div>
+                    <div class="col-auto">{{form.password.label(class="form-control-label")}}
+                        {{form.password(class="form-control")}}
+                        {% if form.password.errors %}
+
+                        {% for error in form.password.errors %}
+                        <small>
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </small>
+                        {% endfor %}
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <!--                <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>-->
+                {{form.submit(class="btn btn-primary btn-lg")}}
+            </div>
+        </form>
+
+    </div>
+    <br>
+    Already have an account? <a href="{{url_for('login')}}">Login</a>
+</div>
+{% endblock %}
