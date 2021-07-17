@@ -1,0 +1,41 @@
+{% extends 'Account_Layout.html' %}
+{% block body %}
+
+<div class="text-center">
+    <img src="{{url_for('static',filename='writing.png')}}" class="rounded" alt="...">
+</div>
+<br>
+<div class="text-center">
+    <form action="" method="post">
+        {{form.hidden_tag()}}
+         <div style="margin-left:auto; margin-right:auto; height: 30%; width:75%;">
+            {{form.subject.label(class="form-control-label")}}
+            {{form.subject(class="form-control")}}
+            {% if form.subject.errors %}
+            {% for error in form.subject.errors %}
+            <small>
+                <div class="alert alert-danger" role="alert">{{ error }}</div>
+            </small>
+            {% endfor %}
+            {% endif %}
+        </div>
+<br><br>
+        <div style="margin-left:auto; margin-right:auto; height: 30%; width:75%;">
+            {{form.complaint.label(class="form-control-label")}}
+            {{form.complaint(class="form-control")}}
+            {% if form.complaint.errors %}
+            {% for error in form.complaint.errors %}
+            <small>
+                <div class="alert alert-danger" role="alert">{{ error }}</div>
+            </small>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <br>
+        <div><b>{{date[0] + '-'+date[1]+'-'+date[2]}}</b></div>
+        <br>
+        {{form.submit(class="btn btn-primary btn-lg")}}
+    </form>
+</div>
+
+{% endblock %}

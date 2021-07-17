@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>{{page_name}}</title>
+
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+      <ul class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('home')}}">Home</a>
+      <a class="navbar-brand"  href="{{ url_for('signup')}}">Signup</a>
+      <a class="navbar-brand"  href="{{ url_for('login')}}">Login</a>
+      </ul>
+  </div>
+</nav>
+
+  {% with messages = get_flashed_messages(with_categories=true)%}
+  {% if messages %}
+  {% for category , message in messages %}
+  <div class="alert alert-{{category}}">
+      {{message}}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+{% block body %} {% endblock %}
+</body>
+</html>

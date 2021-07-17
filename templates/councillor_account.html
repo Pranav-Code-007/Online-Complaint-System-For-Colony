@@ -1,0 +1,30 @@
+{% extends 'Account_Layout.html' %}
+{% block body %}
+<nav class="navbar navbar-expand-sm bg-light">
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                submit.submit(class="btn btn-dark")
+            </li>
+        </ul>
+    </nav>
+
+
+{% for complaints in data%}
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-dark p-4">
+    <h6 class="text-white h6">{{complaints.complaint}}</h6>
+<!--    <span class="text-muted">Toggleable via the navbar brand.</span>-->
+  </div>
+</div>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+ <!--      <span class="navbar-toggler-icon"></span>-->
+
+      <p class="text-white">{{complaints.subject}}</p>
+    </button>
+  </div>
+</nav>
+{% endfor %}
+{% endblock %}
