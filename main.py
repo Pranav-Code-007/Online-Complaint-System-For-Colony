@@ -33,25 +33,25 @@ db = MySQLAlchemy(app)
 class Database:
     @staticmethod
     def getName(table, key: str):
-        list = table.query.filter_by(email=key).all()
+        list = table.query.filter_by(email=encrypt(key)).all()
         return list[0].name
 
     @staticmethod
     def isUserExist(table, email: str):
-        list = table.query.filter_by(email=email).first()
+        list = table.query.filter_by(email=encrypt(email)).first()
         if list is None:
             return False
         return True
 
     @staticmethod
     def isPasswordCorrect(table, email: str, password):
-        list = table.query.filter_by(eamil=email).first()
+        list = table.query.filter_by(eamil=encrypt(email)).first()
         return list[0].password == password
 
     @staticmethod
     def addCitizen(firstname, lastname, email, password):
 
-        db.session.add(Citizen(firstname, lastname, email, password))
+        db.session.add(Citizen(firstname, lastname, encrypt(email),  encrypt(password)))
         db.session.commit()
 
 
